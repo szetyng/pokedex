@@ -42,7 +42,7 @@ fetchPokemons();
         />
 
         <button
-          class="bg-primary py-2 px-4 rounded"
+          class="bg-primary py-4 px-4 my-auto rounded h-fit"
           @click="fetchPokemons(nextPage, currPage)"
         >
           <span class="font-bold">Load more</span>
