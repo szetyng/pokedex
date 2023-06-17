@@ -3,6 +3,15 @@ module.exports = {
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontSize: {
+        xl: "62pt",
+        default: "20pt",
+        title: "48pt",
+      },
+      fontWeight: {
+        normal: 400,
+        bold: 700,
+      },
       colors: {
         primary: "#FBBF24",
         hover: "#D97706",
