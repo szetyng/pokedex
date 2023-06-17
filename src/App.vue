@@ -37,7 +37,7 @@ fetchPokemons();
         <PokemonCard
           v-for="pokemon in pokemons"
           :key="pokemon.name"
-          :name="pokemon.name"
+          :pokemonName="pokemon.name"
           :url="pokemon.url"
         />
 

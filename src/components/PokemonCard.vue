@@ -1,9 +1,10 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { getPokemonByUrl } from "../utils/api";
+import { useStorage } from "@vueuse/core";
 
 const props = defineProps({
-  name: String,
+  pokemonName: String,
   url: String,
 });
 
@@ -46,8 +47,13 @@ const closeDialog = () => {
   dialog.value = false;
 };
 
-const toggleLike = () => {
-  console.log("hel;f");
+// Handle favouriting feature
+const pokemonsLiked = useStorage("pokedexLikes", {});
+const isLiked = computed(() => {
+  return pokemonsLiked.value[pokemonId.value];
+});
+const toggleLike = (pokemonKey) => {
+  pokemonsLiked.value[pokemonKey] = !pokemonsLiked.value[pokemonKey];
 };
 
 // Additional functions to help display card
@@ -77,8 +83,9 @@ const capitaliseStats = (str) => {
     class="bg-card-background p-4 h-full rounded-lg hover:cursor-pointer"
     @click="openDialog"
   >
-    <img class="w-full" :src="imageUrl" :alt="`Picture of ${name}`" />
-    <p class="text-center">{{ capitaliseFirst(name) }}</p>
+    <img class="w-full" :src="imageUrl" :alt="`Picture of ${pokemonName}`" />
+    {{ pokemonsLiked }}
+    <p class="text-center">{{ capitaliseFirst(pokemonName) }}</p>
   </div>
 
   <!-- Dialog -->
@@ -93,13 +100,20 @@ const capitaliseStats = (str) => {
       <!-- First Column -->
       <div class="col-span-1 p-8 relative">
         <i
-          @click="toggleLike"
+          @click="toggleLike(pokemonId)"
           class="pi pi-heart-fill absolute top-0 right-0 mt-6 mr-6 hover:cursor-pointer"
-          style="color: #ef4444; font-size: 2.5rem"
+          :style="{
+            color: isLiked ? '#EF4444' : '#F1F5F9',
+            fontSize: '2.5rem ',
+          }"
         ></i>
 
-        <img class="w-full" :src="imageUrl" :alt="`Picture of ${name}`" />
-        <h2 class="text-xl text-center">{{ name }}</h2>
+        <img
+          class="w-full"
+          :src="imageUrl"
+          :alt="`Picture of ${pokemonName}`"
+        />
+        <h2 class="text-xl text-center">{{ pokemonName }}</h2>
         <p class="text-secondary-text text-xl text-center">
           {{ paddifyId(pokemonId) }}
         </p>
