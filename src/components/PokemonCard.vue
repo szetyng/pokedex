@@ -132,15 +132,17 @@ const capitaliseStats = (str) => {
           :src="imageUrl"
           :alt="`Picture of ${pokemonName}`"
         />
-        <h2 class="text-xl text-center">{{ capitaliseFirst(pokemonName) }}</h2>
-        <p class="text-secondary-text text-xl text-center">
+        <h2 class="text-title font-bold text-center">
+          {{ capitaliseFirst(pokemonName) }}
+        </h2>
+        <p class="text-secondary-text text-title font-bold text-center">
           {{ paddifyId(pokemonId) }}
         </p>
       </div>
 
       <!-- Second Column -->
       <div class="col-span-2 bg-empty-field p-8">
-        <h2 class="text-xl">Stats</h2>
+        <h2 class="text-title font-bold">Stats</h2>
 
         <div
           v-for="(row, index) in tableData"

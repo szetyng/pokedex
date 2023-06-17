@@ -43,7 +43,7 @@ const searchPokemon = async () => {
 <template>
   <header>
     <div>
-      <span class="text-xl">Pokédex</span>
+      <span class="text-title font-bold">Pokédex</span>
     </div>
   </header>
 
