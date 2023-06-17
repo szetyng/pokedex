@@ -11,6 +11,7 @@ const props = defineProps({
 const pokemonId = ref(0);
 const imageUrl = ref(null);
 const tableData = ref([]);
+const dialog = ref(false);
 
 // On load, get additional pokemon details for card
 const fetchPokemonDetails = async (pokemonUrl) => {
@@ -37,9 +38,6 @@ const fetchPokemonDetails = async (pokemonUrl) => {
 
 fetchPokemonDetails(props.url);
 
-// Handle dialog popup
-const dialog = ref(false);
-
 // Handle favouriting feature
 const pokemonsLiked = useStorage("pokedexLikes", {});
 const isLiked = computed(() => {
@@ -49,7 +47,7 @@ const toggleLike = (pokemonKey) => {
   pokemonsLiked.value[pokemonKey] = !pokemonsLiked.value[pokemonKey];
 };
 
-// Additional functions to help display card
+// Additional functions to help display card details
 const paddifyId = (number) => {
   return String(number).padStart(4, "0");
 };

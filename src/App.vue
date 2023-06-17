@@ -21,6 +21,7 @@ fetchPokemons();
 // Handle search
 const searchQuery = ref("");
 const searchPokemon = async () => {
+  // Clear pagination values
   nextPage.value = null;
 
   if (searchQuery.value === "") {
