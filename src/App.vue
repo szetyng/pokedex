@@ -49,16 +49,19 @@ const searchPokemon = async () => {
 
   <main>
     <span class="block">Search for a Pokémon by name or id number</span>
-    <div class="my-2 relative">
+    <div class="my-2 flex w-4/12">
       <input
         v-model="searchQuery"
+        class="w-full px-4 py-2 rounded focus:outline-none"
         type="text"
         placeholder="Name or id number"
-        class="w-4/12 pl-4 pr-4 py-2 rounded focus:outline-none"
         @keyup.enter="searchPokemon"
       />
-      <!-- <i class="pi pi-search absolute "></i> -->
+      <button class="px-4 py-2 rounded-r bg-white" @click="searchPokemon">
+        <i class="pi pi-search"></i>
+      </button>
     </div>
+
     <div class="grid grid-cols-12 gap-4">
       <div class="grid grid-cols-6 gap-4 col-span-9">
         <PokemonCard
