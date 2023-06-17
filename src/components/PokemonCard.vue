@@ -80,7 +80,7 @@ const capitaliseStats = (str) => {
 
 <template>
   <div
-    class="bg-card-background p-4 h-full rounded-lg hover:cursor-pointer relative"
+    class="bg-card-background p-4 h-56 rounded-lg hover:cursor-pointer relative"
     @click="openDialog"
   >
     <i
@@ -91,8 +91,15 @@ const capitaliseStats = (str) => {
         fontSize: '1.5rem ',
       }"
     ></i>
-    <img class="w-full" :src="imageUrl" :alt="`Picture of ${pokemonName}`" />
-    <p class="text-center">{{ capitaliseFirst(pokemonName) }}</p>
+    <img
+      class="w-full mb-4"
+      :src="imageUrl"
+      :alt="`Picture of ${pokemonName}`"
+    />
+    <p class="text-center font-bold">{{ capitaliseFirst(pokemonName) }}</p>
+    <p class="text-center font-bold text-secondary-text">
+      {{ paddifyId(pokemonId) }}
+    </p>
   </div>
 
   <!-- Dialog -->
@@ -124,7 +131,7 @@ const capitaliseStats = (str) => {
           :src="imageUrl"
           :alt="`Picture of ${pokemonName}`"
         />
-        <h2 class="text-xl text-center">{{ pokemonName }}</h2>
+        <h2 class="text-xl text-center">{{ capitaliseFirst(pokemonName) }}</h2>
         <p class="text-secondary-text text-xl text-center">
           {{ paddifyId(pokemonId) }}
         </p>
