@@ -28,8 +28,15 @@ const searchPokemon = async () => {
     fetchPokemons();
     return;
   }
-  const { name, url } = await getPokemonByNameOrId(searchQuery.value);
-  pokemons.value = [{ name, url }];
+
+  try {
+    const { name, url } = await getPokemonByNameOrId(
+      searchQuery.value.toLowerCase()
+    );
+    pokemons.value = [{ name, url }];
+  } catch (err) {
+    alert(`Pokemon ${searchQuery.value} not found.`);
+  }
 };
 </script>
 
