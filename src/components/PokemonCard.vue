@@ -39,13 +39,6 @@ fetchPokemonDetails(props.url);
 
 // Handle dialog popup
 const dialog = ref(false);
-const openDialog = () => {
-  dialog.value = true;
-};
-
-const closeDialog = () => {
-  dialog.value = false;
-};
 
 // Handle favouriting feature
 const pokemonsLiked = useStorage("pokedexLikes", {});
@@ -81,7 +74,7 @@ const capitaliseStats = (str) => {
 <template>
   <div
     class="bg-card-background p-4 h-56 rounded-lg hover:cursor-pointer relative"
-    @click="openDialog"
+    @click="dialog = true"
   >
     <i
       @click.stop="toggleLike(pokemonId)"
@@ -112,7 +105,15 @@ const capitaliseStats = (str) => {
     <div class="bg-gray-800 bg-opacity-50 absolute inset-0"></div>
 
     <!-- Dialog card -->
-    <div class="bg-card-background rounded-xl z-10 w-9/12 grid grid-cols-3">
+    <div
+      class="bg-card-background rounded-xl z-10 w-9/12 grid grid-cols-3 relative"
+    >
+      <div
+        class="w-16 h-16 rounded-full bg-primary flex items-center justify-center hover:cursor-pointer absolute top-0 right-0 -mt-8 -mr-8"
+        @click="dialog = false"
+      >
+        <i class="pi pi-times" style="font-size: 2rem"></i>
+      </div>
       <!-- Dialog content -->
 
       <!-- First Column -->
@@ -135,13 +136,6 @@ const capitaliseStats = (str) => {
         <p class="text-secondary-text text-xl text-center">
           {{ paddifyId(pokemonId) }}
         </p>
-
-        <button
-          class="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
-          @click="closeDialog"
-        >
-          Close
-        </button>
       </div>
 
       <!-- Second Column -->
