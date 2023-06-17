@@ -139,7 +139,7 @@ const capitaliseStats = (str) => {
       </div>
 
       <!-- Second Column -->
-      <div class="col-span-2 bg-empty-field p-8">
+      <div class="col-span-2 bg-empty-field p-8 rounded-r-xl">
         <h2 class="text-title font-bold">Stats</h2>
 
         <div
