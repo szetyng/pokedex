@@ -46,6 +46,10 @@ const closeDialog = () => {
   dialog.value = false;
 };
 
+const toggleLike = () => {
+  console.log("hel;f");
+};
+
 // Additional functions to help display card
 const paddifyId = (number) => {
   return String(number).padStart(4, "0");
@@ -87,7 +91,13 @@ const capitaliseStats = (str) => {
       <!-- Dialog content -->
 
       <!-- First Column -->
-      <div class="col-span-1 p-8">
+      <div class="col-span-1 p-8 relative">
+        <i
+          @click="toggleLike"
+          class="pi pi-heart-fill absolute top-0 right-0 mt-6 mr-6 hover:cursor-pointer"
+          style="color: #ef4444; font-size: 2.5rem"
+        ></i>
+
         <img class="w-full" :src="imageUrl" :alt="`Picture of ${name}`" />
         <h2 class="text-xl text-center">{{ name }}</h2>
         <p class="text-secondary-text text-xl text-center">
@@ -140,3 +150,9 @@ const capitaliseStats = (str) => {
     </div>
   </div>
 </template>
+
+<style scoped>
+.heart-icon path {
+  fill: black;
+}
+</style>
