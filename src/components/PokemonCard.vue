@@ -150,7 +150,7 @@ const capitaliseStats = (str) => {
           <div
             :class="[
               'col-span-8',
-              index % 2 === 0 ? 'bg-white' : 'bg-empty-field',
+              index % 2 === 0 ? 'bg-white' : 'bg-slate-50',
               'p-2',
               'rounded',
               'font-bold',
@@ -162,7 +162,7 @@ const capitaliseStats = (str) => {
           <div
             :class="[
               'col-span-4',
-              index % 2 === 0 ? 'bg-white' : 'bg-empty-field',
+              index % 2 === 0 ? 'bg-white' : 'bg-slate-50',
               'p-2',
               'rounded',
               'font-bold',
