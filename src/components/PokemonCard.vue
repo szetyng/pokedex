@@ -80,16 +80,27 @@ const capitaliseStats = (str) => {
 
 <template>
   <div
-    class="bg-card-background p-4 h-full rounded-lg hover:cursor-pointer"
+    class="bg-card-background p-4 h-full rounded-lg hover:cursor-pointer relative"
     @click="openDialog"
   >
+    <i
+      @click.stop="toggleLike(pokemonId)"
+      class="pi pi-heart-fill absolute top-0 right-0 mt-2 mr-2"
+      :style="{
+        color: isLiked ? '#EF4444' : '#F1F5F9',
+        fontSize: '1.5rem ',
+      }"
+    ></i>
     <img class="w-full" :src="imageUrl" :alt="`Picture of ${pokemonName}`" />
-    {{ pokemonsLiked }}
     <p class="text-center">{{ capitaliseFirst(pokemonName) }}</p>
   </div>
 
   <!-- Dialog -->
-  <div v-if="dialog" class="fixed inset-0 flex items-center justify-center">
+  <div
+    v-if="dialog"
+    class="fixed inset-0 flex items-center justify-center"
+    style="z-index: 10"
+  >
     <!-- Dialog grey thing -->
     <div class="bg-gray-800 bg-opacity-50 absolute inset-0"></div>
 
