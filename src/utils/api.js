@@ -21,3 +21,15 @@ export const getPokemons = async (nextUrl = null, offset = 0) => {
     throw error;
   }
 };
+
+export const getPokemonByUrl = async (url) => {
+  const config = { url };
+
+  try {
+    const response = await axios(config);
+    return response.data;
+  } catch (error) {
+    console.error("Error retrieving Pokémon data:", error);
+    throw error;
+  }
+};

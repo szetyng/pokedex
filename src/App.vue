@@ -11,7 +11,7 @@ const totalPokemons = ref(0);
 const fetchPokemons = async (nextUrl = null, offset = 0) => {
   const { results, next, count } = await getPokemons(nextUrl, offset);
 
-  pokemons.value.push(results);
+  pokemons.value.push(...results);
   nextPage.value = next;
   totalPokemons.value = count;
 
@@ -32,19 +32,14 @@ fetchPokemons();
 
   <main>
     <span>Search for a Pokémon by name or id number</span>
-    {{ pokemons }}
     <div class="grid grid-cols-12 gap-4">
       <div class="grid grid-cols-6 gap-4 col-span-9">
-        <PokemonCard />
-        <PokemonCard />
-        <PokemonCard />
-        <PokemonCard />
-        <PokemonCard />
-        <PokemonCard />
-        <PokemonCard />
-        <PokemonCard />
-        <PokemonCard />
-        <PokemonCard />
+        <PokemonCard
+          v-for="pokemon in pokemons"
+          :key="pokemon.name"
+          :name="pokemon.name"
+          :url="pokemon.url"
+        />
 
         <button
           class="bg-primary py-2 px-4 rounded"
