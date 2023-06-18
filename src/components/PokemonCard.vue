@@ -96,8 +96,7 @@ const capitaliseStats = (str) => {
   <!-- Dialog -->
   <div
     v-if="dialog"
-    class="fixed inset-0 flex items-center justify-center"
-    style="z-index: 10"
+    class="fixed inset-0 flex items-center justify-center z-10"
   >
     <!-- Dialog grey thing -->
     <div class="bg-gray-800 bg-opacity-50 absolute inset-0"></div>
@@ -177,8 +176,4 @@ const capitaliseStats = (str) => {
   </div>
 </template>
 
-<style scoped>
-.heart-icon path {
-  fill: black;
-}
-</style>
+<style scoped></style>
